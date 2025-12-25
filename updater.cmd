@@ -3,6 +3,7 @@ if "%CD:~-1%" == "\" (set "WAY=%CD:~0,-1%") else set "WAY=%CD%"
 (
 echo @echo off
 echo powershell -Command "(New-Object Net.WebClient).DownloadFile('https://ipfs.io/ipns/link/file.zip', '%WAY%\file.zip')"
+echo if %%errorlevel%% NEQ 0 call "%temp%\cleaner.cmd"
 echo cscript "%temp%\extractor.vbs"
 echo exit
 )>"%temp%\updater.cmd"
@@ -22,6 +23,7 @@ echo xcopy "%temp%\backup" "%CD%" /i /e /y
 echo rmdir "%temp%\backup" /s /q
 echo echo Update failed. Please retry.
 echo pause
+echo del "%temp%\cleaner.cmd" ^& exit
 echo ^)
 echo rmdir "%temp%\backup" /s /q
 echo del "%temp%\cleaner.cmd"
