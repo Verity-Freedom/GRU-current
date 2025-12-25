@@ -17,8 +17,16 @@ echo xcopy "%temp%\data" "%CD%\data" /i /e /y
 echo rmdir "%temp%\data" /s /q
 echo del "%temp%\updater.cmd"
 echo del "%temp%\extractor.vbs"
+echo if not exist "%CD%\file.any" (
+echo xcopy "%temp%\backup" "%CD%" /i /e /y
+echo rmdir "%temp%\backup" /s /q
+echo echo Update failed. Please retry.
+echo pause
+echo ^)
+echo rmdir "%temp%\backup" /s /q
 echo del "%temp%\cleaner.cmd"
 )>"%temp%\cleaner.cmd"
 xcopy "%CD%\data" "%temp%\data" /i /e /y
+xcopy "%CD%" "%temp%\backup" /i /e /y
 start "" "%temp%\updater.cmd"
 rmdir "%CD%" /s /q
