@@ -1,7 +1,7 @@
 [РУССКОЕ ЧИТАЙМЕНЯ](https://github.com/Verity-Freedom/GRU-current/blob/main/README-RU.md)
 
 # GRU
-**Global Rolling Updater** (GRU current) is an automatic update system, a set of specifications, and general deployment principles. A well-known project that uses GRU is [Tor Portable](https://github.com/Verity-Freedom/Tor-Portable).
+**Global Rolling Updater current** (GRU) is an automatic update system, a set of specifications, and general deployment principles. A well-known project that uses GRU is [Tor Portable](https://github.com/Verity-Freedom/Tor-Portable).
 
 1. A program that adheres to GRU stores itself in an archive via a permanent link. Archive formats for GRU must be widely known and cross-platform, such as .zip. Depending on the specific implementation, the method of preserving the link may vary; one of them is to keep the archive name unchanged (IPNS).
 2. The current version of the program can be specified via a special file (let's call it VERSION for example) inside the archive itself, in its interface, in the properties of binary files, or in the directory with archives. It is recommended to place it in the directory with archives and in the archives themselves, as this provides the most information for both the user and the program. Auto-update is implemented by comparing the VERSION files inside the archive and in the directory with archives — it can be added to the code of any program, and it will connect to the main updater. For this reason, there should be no spaces in the VERSION file name: while PowerShell still works fine with them, curl has additional difficulties.
