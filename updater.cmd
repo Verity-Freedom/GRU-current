@@ -1,9 +1,14 @@
 @echo off & cd /d "%~dp0"
+ping ipfs.io -n 1
+if %errorlevel% NEQ 0 (
+echo I need ipfs.io connectivity to update. Please check your Internet connection.
+pause
+exit
+)
 if "%CD:~-1%" == "\" (set "WAY=%CD:~0,-1%") else set "WAY=%CD%"
 (
 echo @echo off
 echo powershell -Command "(New-Object Net.WebClient).DownloadFile('https://ipfs.io/ipns/link/file.zip', '%WAY%\file.zip')"
-echo if %%errorlevel%% NEQ 0 call "%temp%\cleaner.cmd"
 echo cscript "%temp%\extractor.vbs"
 echo exit
 )>"%temp%\updater.cmd"
@@ -18,18 +23,8 @@ echo xcopy "%temp%\data" "%CD%\data" /i /e /y
 echo rmdir "%temp%\data" /s /q
 echo del "%temp%\updater.cmd"
 echo del "%temp%\extractor.vbs"
-echo if not exist "%CD%\file.any" (
-echo xcopy "%temp%\backup" "%CD%" /i /e /y
-echo rmdir "%temp%\backup" /s /q
-echo echo Update failed. Please retry.
-echo del "%temp%\cleaner.cmd"
-echo pause
-echo exit
-echo ^)
-echo rmdir "%temp%\backup" /s /q
 echo del "%temp%\cleaner.cmd"
 )>"%temp%\cleaner.cmd"
 xcopy "%CD%\data" "%temp%\data" /i /e /y
-xcopy "%CD%" "%temp%\backup" /i /e /y
 start "" "%temp%\updater.cmd"
 rmdir "%CD%" /s /q
