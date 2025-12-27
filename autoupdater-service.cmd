@@ -22,7 +22,7 @@ exit
 )
 del "%temp%\%UPD%"
 :Service
-if "%CHECK%" EQU "1" exit
+if "%CHECK%" EQU "1" && "!UPDATE!" NEQ "0" exit
 ...
 Echo.
 Echo Please don't close this window, I will finish the work and check version...
