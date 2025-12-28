@@ -11,9 +11,9 @@ echo cls>>"%temp%\autoupdater.cmd"
 echo :Wait>>"%temp%\autoupdater.cmd"
 echo if not exist "%CD%\file.any" GOTO Wait>>"%temp%\autoupdater.cmd"
 echo timeout /t 1 /nobreak>>"%temp%\autoupdater.cmd"
-echo cmd /c "%CD%\%~nx0">>"%temp%\autoupdater.cmd"
-echo del "%temp%\autoupdater.cmd">>"%temp%\autoupdater.cmd"
-cmd /c "%temp%\autoupdater.cmd"
+echo call "%CD%\%~nx0">>"%temp%\autoupdater.cmd"
+echo del "%temp%\autoupdater.cmd" ^& exit>>"%temp%\autoupdater.cmd"
+start "" "%temp%\autoupdater.cmd"
 exit
 )
 del "%temp%\%UPD%"
