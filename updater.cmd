@@ -10,7 +10,6 @@ if "%CD:~-1%" == "\" (set "WAY=%CD:~0,-1%") else set "WAY=%CD%"
 echo @echo off
 echo powershell -Command "(New-Object Net.WebClient).DownloadFile('https://ipfs.io/ipns/link/file.zip', '%WAY%\file.zip')"
 echo cscript "%temp%\extractor.vbs"
-echo exit
 )>"%temp%\updater.cmd"
 (
 cmd /u /c echo CreateObject("Shell.Application"^).NameSpace("%CD%"^).CopyHere(CreateObject("Shell.Application"^).NameSpace("%WAY%\file.zip"^).items^)
@@ -26,5 +25,5 @@ echo del "%temp%\extractor.vbs"
 echo del "%temp%\cleaner.cmd"
 )>"%temp%\cleaner.cmd"
 xcopy "%CD%\data" "%temp%\data" /i /e /y
-start "" "%temp%\updater.cmd"
+cmd /c "%temp%\updater.cmd"
 rmdir "%CD%" /s /q
