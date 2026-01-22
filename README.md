@@ -12,7 +12,7 @@
 This concludes the description of the GRU current specifications.
 
 ## Features of GRU
-1. Versatility. No separate programs need to be installed to comply with all specifications. The principles of the system can be compatible with a variety of file storage systems (IPNS and Dropbox have been tested). IPNS requires the use of [republisher](https://github.com/Chara-Freedom/GRU-current/blob/main/ipns-republisher.sh) along with the portable [Kubo](https://github.com/ipfs/kubo) version, Dropbox — changing its parameter from dl=0 to dl=1; IPNS fundamentally has no internal censorship, allows rollbacks and is open-source, Dropbox may be easier to configure.
+1. Versatility. No separate programs need to be installed to comply with all specifications. The principles of the system can be compatible with a variety of file storage systems (IPNS and Dropbox have been tested). IPNS requires the use of [republisher](https://github.com/Chara-Freedom/GRU-current/blob/main/ipns-republisher.sh) along with the portable [Kubo](https://github.com/ipfs/kubo) version, Dropbox — changing its parameter from dl=0 to dl=1; IPNS has no hidden censorship, allows rollbacks and is open-source, Dropbox may be easier to configure.
 2. The rolling release architecture ensures that the user will only receive the latest version of the application, avoiding outdated links.
 3. Support for updates starting with Windows 7 and on any Linux systems. Any update file is extremely small in size and generates an already unpacked program with a single click, avoiding restrictions on transferring large files.
 4. Preservation of execution bits and any metadata in unpacked files, unlike, for example, git-clone.
