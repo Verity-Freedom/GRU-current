@@ -11,7 +11,7 @@ read -n 1 -p "There are too many files to update. You don't want to run the upda
  exit
  fi
 fi
-lsof -t ./dir/ld-linux-x86-64.so.2 | xargs -r kill
+lsof -t ./ld-linux-x86-64.so.2 | xargs -r kill
 cp -r ./data ~/data
 rm -r *
 curl "https://ipfs.io/ipns/link/file.zip" -O
