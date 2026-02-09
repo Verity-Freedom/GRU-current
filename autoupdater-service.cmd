@@ -6,7 +6,7 @@ if %errorlevel% NEQ 0 (
 sc query "Service" >nul
 if !errorlevel! EQU 0 set "CHECK=0" & goto Service
 :Loop
-choice /c abc /n /m "The local version does not match the latest version. Do you want to update and start service (A), update without starting service (B), or skip update (C)?"
+choice /c 123 /n /m "The local version does not match the latest version. Do you want to update and start service (1), update without starting service (2), or skip update (3)?"
 if !errorlevel! EQU 1 set "UPDATE=0"
 if !errorlevel! EQU 3 GOTO Service
 echo @echo off>"%temp%\autoupdater.cmd"
