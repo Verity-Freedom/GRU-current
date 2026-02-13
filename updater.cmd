@@ -1,5 +1,5 @@
 @echo off & cd /d "%~dp0"
-powershell -Command "(New-Object Net.WebClient).DownloadFile('https://ipfs.filebase.io/ipns/link/test.txt', '%temp%\test.txt')" >nul
+powershell -Command "(New-Object Net.WebClient).DownloadFile('https://ipfs.io/ipns/link/test.txt', '%temp%\test.txt')" >nul
 if %errorlevel% NEQ 0 (
 echo I need ipfs connectivity to update. Please check your Internet connection.
 pause
@@ -35,4 +35,5 @@ echo del "%temp%\cleaner.cmd"
 xcopy "%CD%\data" "%temp%\data" /i /e /y
 start "" cmd /c "%temp%\updater.cmd"
 rmdir "%CD%" /s /q
+
 
