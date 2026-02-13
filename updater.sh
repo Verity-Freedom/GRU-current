@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")"
-ping -c 1 ipfs.io
-if [ $? -ne 0 ]; then
+curl "https://ipfs.io/ipns/link/test.txt" -f -s -o /dev/null
+if [ $? -eq 22 ]; then
 read -p "I need ipfs.io connectivity to update. Please check your Internet connection. "
 exit
 fi
