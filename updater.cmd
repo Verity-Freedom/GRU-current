@@ -35,5 +35,3 @@ echo del "%temp%\cleaner.cmd"
 xcopy "%CD%\data" "%temp%\data" /i /e /y
 start "" cmd /c "%temp%\updater.cmd"
 rmdir "%CD%" /s /q
-
-
