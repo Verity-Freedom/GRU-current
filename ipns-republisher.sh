@@ -6,8 +6,8 @@ sleep 20
 while pgrep -x ld-linux-x86-64 > /dev/null
 do
 ./ld-linux-x86-64.so.2 --library-path . ../kubo/ipfs name get /ipns/link1 > record.bin
-./ld-linux-x86-64.so.2 --library-path . ../kubo/ipfs name put link1 record.bin --force
+./ld-linux-x86-64.so.2 --library-path . ../kubo/ipfs name put link1 record.bin
 ./ld-linux-x86-64.so.2 --library-path . ../kubo/ipfs name get /ipns/link2 > record.bin
-./ld-linux-x86-64.so.2 --library-path . ../kubo/ipfs name put link2 record.bin --force
+./ld-linux-x86-64.so.2 --library-path . ../kubo/ipfs name put link2 record.bin
 sleep 1d
 done
