@@ -1,14 +1,15 @@
 @echo off & cd /d "%~dp0"
 setlocal EnableDelayedExpansion
+if exist "%CD%\AUTO.no" GOTO Service
 for %%I in (VERSION*) do set "UPD=%%~nxI"
 powershell -Command "(New-Object Net.WebClient).DownloadFile('https://ipfs.io/ipns/link/%UPD%', '%temp%\%UPD%')" >nul
 if %errorlevel% NEQ 0 (
 sc query "Service" >nul
 if !errorlevel! EQU 0 set "CHECK=0" & goto Service
 :Loop
-choice /c 123 /n /m "The local version does not match the latest version. Do you want to update and start service (1), update without starting service (2), or skip update (3)?"
+choice /c 123 /n /m "The local version does not match the latest version. Do you want to update and start service (1), update without starting service (2), or disable autoupdate (3, delete AUTO.no to enable again)?"
 if !errorlevel! EQU 1 set "UPDATE=0"
-if !errorlevel! EQU 3 GOTO Service
+if !errorlevel! EQU 3 type nul > "%CD%\AUTO.no" & GOTO Service
 echo @echo off>"%temp%\autoupdater.cmd"
 echo call "%CD%\updater.cmd">>"%temp%\autoupdater.cmd"
 echo cls>>"%temp%\autoupdater.cmd"
