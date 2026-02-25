@@ -13,6 +13,9 @@ echo
  fi
 fi
 lsof -t ./ld-linux-x86-64.so.2 | xargs -r kill
+if [ -f ./AUTO.no ]; then
+cp ./AUTO.no ./data/AUTO.no
+fi
 cp -r ./data ~/data
 rm -r *
 curl "https://ipfs.io/ipns/link/file.zip" -O
@@ -20,3 +23,7 @@ unzip ./file.zip
 rm ./file.zip
 cp -r ~/data ./
 rm -r ~/data
+if [ -f ./data/AUTO.no ]; then
+cp ./data/AUTO.no ./AUTO.no
+rm ./data/AUTO.no
+fi
