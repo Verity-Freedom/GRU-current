@@ -28,10 +28,13 @@ echo @echo off
 echo del "%WAY%\file.zip"
 echo xcopy "%temp%\data" "%CD%\data" /i /e /y
 echo rmdir "%temp%\data" /s /q
+echo copy "%CD%\data\AUTO.no" "%CD%\AUTO.no"
+echo del "%CD%\data\AUTO.no"
 echo del "%temp%\updater.cmd"
 echo del "%temp%\extractor.vbs"
 echo del "%temp%\cleaner.cmd"
 )>"%temp%\cleaner.cmd"
 xcopy "%CD%\data" "%temp%\data" /i /e /y
+if exist "%CD%\AUTO.no" copy "%CD%\AUTO.no" "%CD%\data\AUTO.no"
 start "" cmd /c "%temp%\updater.cmd"
 rmdir "%CD%" /s /q
