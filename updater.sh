@@ -18,9 +18,9 @@ cp ./AUTO.no ./data/AUTO.no
 fi
 cp -r ./data ~/data
 rm -r *
-curl "https://ipfs.io/ipns/link/file.zip" -O
-unzip ./file.zip
-rm ./file.zip
+curl "https://ipfs.io/ipns/link/file.tar.gz" -O
+tar -xvzf ./file.tar.gz
+rm ./file.tar.gz
 cp -r ~/data ./
 rm -r ~/data
 if [ -f ./data/AUTO.no ]; then
