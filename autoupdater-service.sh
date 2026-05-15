@@ -10,7 +10,7 @@ systemctl --user is-active --quiet .service
  CHECK=0
  fi
  if [ $INP != 0 ]; then
- ./updater.sh
+ "./updater.sh"
  fi
  if [ $INP = 0 ]; then
  touch "./AUTO.no"
